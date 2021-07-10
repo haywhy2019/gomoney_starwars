@@ -1,0 +1,40 @@
+.topPad{
+    padding-top: 5rem;
+    border-top: 5rem;
+}
+
+.logo{
+    height: 4rem;
+    
+}
+
+@media screen and (max-width:600px) {
+    .logo{
+        height: 2rem;
+    }
+}
+
+.favColor{
+    color: rgba(245, 245, 245, 0.945);
+}
+
+.inputBg{
+    background: rgba(245, 245, 245, 0.945);
+    border-radius: 5px;
+}
+
+@media screen and (max-width:600px) {
+    .inputBg{
+      width: 80%;
+    }
+}
+
+
+.input{
+    border-style: none;  
+    background: none;
+}
+
+input:focus {
+    outline: none;
+}
