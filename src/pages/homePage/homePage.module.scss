@@ -1,6 +1,21 @@
 .titleLine{
-    background: black;
+    background: rgb(39, 39, 39);
     width: 8rem;
     height: 0.6rem;
     margin: 0 auto;
 }
+
+.button{
+    color: grey;
+    background: none;
+    padding: 1rem 15rem;
+    font-size: 0.8rem;
+    border-width: 2px;
+    margin: 5rem 0;
+}
+@media screen and (max-width:600px){
+   .button{
+    padding: 1rem 2.5rem;
+    margin: 1rem 0;
+   }
+ }

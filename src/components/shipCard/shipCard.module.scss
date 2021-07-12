@@ -1,0 +1,53 @@
+.card{
+    display: inline-block;
+   width: 25rem;
+   height: 28rem;
+   margin-bottom: 3rem;
+   border: none;
+}
+
+@media screen and (max-width:600px){
+    .card{
+        width: 10rem;
+        margin-bottom: 2rem;
+        height: 19rem;
+    }
+ }
+.button{
+    background: rgb(199, 199, 199);
+    color: black;
+    border-style: none;
+    border: none;
+    border-radius: 0;
+    padding: 0.8rem 2.2rem;
+   
+}
+
+.icon{
+    margin-right: 2rem;
+}
+@media screen and (max-width:600px){
+    .button{ 
+        padding: 0.5rem 1rem; 
+    }
+    .icon{
+        display: none;
+    }
+ }
+.img{
+    margin-left: -15px;
+   
+}
+
+.cardlower{
+   background: rgb(233, 233, 233);
+   box-shadow: -10px 9px 5px 1px rgba(0,0,0,0.26);
+   -webkit-box-shadow: -10px 9px 5px 1px rgba(0,0,0,0.26);
+   -moz-box-shadow: -10px 9px 5px 1px rgba(0,0,0,0.26);
+   margin-top: -10px;
+}
+@media screen and (max-width:600px){
+    .cardlower{
+height: 12rem;
+    }
+ }

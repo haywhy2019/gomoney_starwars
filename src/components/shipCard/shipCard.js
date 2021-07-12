@@ -8,18 +8,22 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
+import style from "./shipCard.module.scss"
+import { ArrowRight } from "react-feather";
 
-function Displaycard({image,title1,title2,title3,description,onClick}) {
+
+function Displaycard({image,title1,title2,title3,description,onClick,icon, className}) {
   return (
     <div>
-      <Card>
+      <Card className={style.card}>
         <CardImg
           top
           width="100%"
+          className={style.img}
           src={image}
           alt="Card image cap"
         />
-        <CardBody>
+        <CardBody className={`text-start ${style.cardlower}`}>
           <CardTitle tag="h5">{title1}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             {title2}
@@ -30,7 +34,9 @@ function Displaycard({image,title1,title2,title3,description,onClick}) {
           <CardText>
             {description}
           </CardText>
-          <Button onClick={onClick}>Read More</Button>
+          <div className={`text-end `}>
+          <Button onClick={onClick} className={style.button}> Read More <ArrowRight size={15} className={style.icon}/> </Button>
+          </div>
         </CardBody>
       </Card>
     </div>

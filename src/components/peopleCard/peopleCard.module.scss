@@ -1,0 +1,60 @@
+.card{
+    display: inline-block;
+   width: 35rem;
+   height: 25rem;
+   margin-bottom: 3rem;
+   border: none;
+
+}
+
+@media screen and (max-width:600px){
+    .card{
+   width: 10rem;
+   height: 15rem;
+   margin-bottom: 7rem;
+   background-color:  rgb(199, 199, 199);
+ }
+ .display{
+     display: block;
+     row-gap: 2rem;
+     column-gap: 2rem;
+ }
+}
+
+.button{
+    background: none;
+    color: black;
+    border-style: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-decoration: underline;
+   
+}
+.img{
+//    height: 30rem;
+   width: 25rem;
+}
+
+
+
+.title{
+    margin-top: 10rem;
+}
+.cardlower{
+background-color:  rgb(199, 199, 199);
+height: 25rem;
+}
+
+@media screen and (max-width:600px){
+    .img{
+        width: 11rem;
+    }
+    .title{
+        margin-top: 0.2rem;
+    }
+    .cardlower{
+        height: 9rem;
+        width: 11rem;
+        }
+ }
