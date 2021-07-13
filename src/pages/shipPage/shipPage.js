@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getPeople } from "../../redux/action/peopleAction";
-import PeopleImages from "../../assets/people"
-import PeopleCard from "../../components/peopleCard/peopleCard"
 import Header from "../../components/header/header";
-import style from "./people.module.scss"
+import style from "./shipPage.module.scss"
+
+import { getShips } from "../../redux/action/shipsAction";
+import ShipCard from "../../components/shipCard/shipCard";
+import ShipImages from "../../assets/ships"
 
 import { Container, Row, Col, Button } from "reactstrap";
 
@@ -13,9 +14,10 @@ function People() {
     const dispatch = useDispatch();
     const [people, setPeople] = useState("");
     const allPeople = useSelector((state) => state.people.people);
+    const allShips = useSelector((state) => state.ships.ships);
 
     useEffect(() => {
-        dispatch(getPeople());
+        dispatch(getShips());
       
       }, []);
     
@@ -32,15 +34,16 @@ function People() {
            <Col className="d-inline-flex flex-wrap justify-content-around" md="12">
            {
            
-           allPeople &&
-            allPeople.data.results
-              .map((people, index) => (
-                <PeopleCard
-                  image={PeopleImages[0].people}
-                  title1={people.name}
-                  title2={people.birth_year}
-                  title3={people.gender}
-                  key={`${index}people`}
+           allShips &&
+            allShips.data.results
+              .filter((ship, index) => index < 9)
+              .map((ships, index) => (
+                <ShipCard
+                  image={ShipImages[0].ship}
+                  title1={ships.name}
+                  title2={ships.model}
+                  title3={ships.cargo_capacity}
+                  key={`${index}ships`}
                 />
               ))}
            </Col>

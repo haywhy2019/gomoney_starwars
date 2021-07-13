@@ -1,0 +1,71 @@
+
+.img{
+    height: 29.5rem;
+    
+}
+
+.position{
+    position: relative;
+}
+
+.positionAb{
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    p{
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+}
+.leftBracket{
+border-style: solid;
+border-color: white;
+border-right-style: none;
+border-width: 2px;
+width: 2rem;
+height: 5rem;
+}
+
+.rightBracket{
+    border-style: solid;
+    border-color: white;
+    border-left-style: none;
+    border-width: 2px;
+    width: 2rem;
+    height: 5rem;
+    }
+.icon{
+    fill: white;
+    stroke: none;
+}
+
+.iconLeft{
+    fill: white;
+    stroke: none; 
+    transform: rotate(180deg)
+}
+.section{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 80rem;
+    margin-left: 20rem;
+}
+.iconBorder{
+   border-style: solid;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: white;
+}
+
+@media screen and (max-width:600px) {
+    .img{
+        height: 10rem;
+    }
+}

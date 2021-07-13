@@ -1,18 +1,20 @@
-.indicator {
-    .custom-tag .carousel-item {
-        display: block
-    }
-    div{
-        ol{
-            li{
-                background-color: white;
-                border-radius: 50%;
-                height: 10px;
-                width: 10px;
-                margin-right: 10px;
-            }
-        }
-    }
+.img{
+    width: 26rem;
+    
 }
 
+.imageCover{
+    position: relative;
+}
+
+.imageText{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+
+    p{
+        margin-bottom: 4px;
+        color: white;
+    }
+}
 

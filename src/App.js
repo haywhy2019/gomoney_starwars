@@ -3,7 +3,9 @@ import './App.css';
 import {Route, Switch} from "react-router-dom"
 import HomePage from "./pages/homePage/homePage"
 import PeoplePage from "./pages/people/people"
+import ShipPage from "./pages/shipPage/shipPage"
 import Footer from "./components/footer/footer"
+import SinglePage from "./pages/single/single"
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
     <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/people" component={PeoplePage} />
+    <Route path="/ships" component={ShipPage} />
+    <Route path="/single" component={SinglePage} />
     </Switch>
     <Footer />
     </div>

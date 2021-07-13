@@ -1,99 +1,63 @@
-import React, { useState } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import React, { Component } from "react";
+import Slider from "react-slick";
+import PlanetImages from "../../assets/planet"
 import style from "./planetCard.module.scss"
 
-const items = [
-  {
-    id: 1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    id: 1,
-    altText: 'Slide 1',
-    caption: 'Slide 2'
-  }
-,
-  {
-    id: 2,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
-  },
-  {
-    id: 3,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
-];
-
-const PlanetCard = (props) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
-
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  }
-
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  }
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  }
-
-  const slides = items.map((item) => {
+const PlanetCard = ({content}) => {
+  console.log(content, "plannnett")
+const planetDetails = content &&(content.data.results)
+console.log(planetDetails, "plannetd")
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1
+    };
     return (
-      <CarouselItem
-        className="custom-tag"
-        tag="div"
-        key={item.id}
-        // onExiting={() => setAnimating(true)}
-        // onExited={() => setAnimating(false)}
-      >
-        <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
-      </CarouselItem>
+      <div>
+        <Slider {...settings}>
+        
+            <div  className={style.imageCover}>
+              <img src={PlanetImages[0].planet} className={style.img}/>
+              <div className={style.imageText}>
+              <p className="fw-bold">{planetDetails&&(planetDetails[0].name)}</p>
+              <p>{planetDetails&&(planetDetails[0].climate)}</p>
+              <p>{planetDetails&&(planetDetails[0].population)}</p>
+              </div>     
+            </div>
+            <div className={style.imageCover}>
+              <img src={PlanetImages[1].planet} className={style.img}/>
+              <div className={style.imageText}>
+              <p className="fw-bold">{planetDetails&&(planetDetails[1].name)}</p>
+              <p>{planetDetails&&(planetDetails[1].climate)}</p>
+              <p>{planetDetails&&(planetDetails[1].population)}</p>
+              </div>
+            </div>
+            <div className={style.imageCover}>
+              <img src={PlanetImages[2].planet} className={style.img}/>
+              <div  className={style.imageText}>
+              <p  className="fw-bold">{planetDetails&&(planetDetails[2].name)}</p>
+              <p>{planetDetails&&(planetDetails[2].climate)}</p>
+              <p>{planetDetails&&(planetDetails[2].population)}</p>
+              </div>
+             
+            </div> 
+            <div className={style.imageCover}>
+              <img src={PlanetImages[1].planet} className={style.img}/>
+              <div className={style.imageText}>
+              <p  className="fw-bold">{planetDetails&&(planetDetails[3].name)}</p>
+              <p>{planetDetails&&(planetDetails[3].climate)}</p>
+              <p>{planetDetails&&(planetDetails[3].population)}</p>
+              </div>
+            </div> 
+         
+        </Slider>
+      </div>
     );
-  });
-
-  return (
-    <div className={style.indicator}>
-      <style>
-        {
-          `.custom-tag {
-              max-width: 50%;
-              height: 500px;
-              background: blue;
-            }.custom-tag .carousel-item {
-                display: block;
-                margin-right: 0;
-            }`
-            
-        }
-      </style>
-      <Carousel
-        activeIndex={0}
-        next={next}
-        previous={previous}
-      >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous}/>
-      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-      </Carousel>
-    </div>
-  );
+  
 }
 
-export default PlanetCard;
+export default PlanetCard
