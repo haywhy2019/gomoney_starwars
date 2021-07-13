@@ -50,9 +50,10 @@ height: 5rem;
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 80rem;
-    margin-left: 20rem;
+    width: 80vw;
+    // margin-left: 20rem;
 }
+
 .iconBorder{
    border-style: solid;
     width: 5rem;
@@ -64,7 +65,51 @@ height: 5rem;
     border-color: white;
 }
 
+
 @media screen and (max-width:600px) {
+    .img{
+        height: 18rem;
+    }
+
+    .section{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 5rem;
+        margin-left: 5rem;
+        flex-direction: column;
+    }
+    .positionAb{
+        position: absolute;
+        bottom: -10rem;
+        left: 2rem;
+        p{
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    }
+    .leftBracket{
+      display: none;
+        }
+        
+        .rightBracket{
+       display: none;
+            }
+    .iconBorder{
+ display: none;
+    }
+    .icon{
+       display: none;
+    }
+    
+    .iconLeft{
+        display: none;
+    }
+}
+
+@media screen and (max-width:375px) {
     .img{
         height: 10rem;
     }

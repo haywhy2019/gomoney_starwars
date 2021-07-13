@@ -4,11 +4,15 @@ import { Container, Row, Col } from "reactstrap";
 import Ship from "../../assets/starship-1.jpg";
 import style from "./single.module.scss";
 import { Play } from "react-feather";
+import Recent from "../../components/recent/recent";
+// import { useDispatch, useSelector } from "react-redux";
+
 
 function Single() {
   return (
     <div>
       <Header content={<Content />} />
+      <Recent  content="people"/>
     </div>
   );
 }
@@ -21,28 +25,26 @@ const Content = () => {
       <div className={style.position}>
         <img src={Ship} alt="logo" className={style.img} />
         <div className={`${style.positionAb}`}>
-            <div className={style.section}> 
+          <div className={style.section}>
             <div className={`d-flex `}>
-            <div className={style.leftBracket}></div>
-            <p className={style.shipName}>Correllian Scout</p>
-            <div className={style.rightBracket}></div>
+              <div className={style.leftBracket}></div>
+              <p className={style.shipName}>Correllian Scout</p>
+              <div className={style.rightBracket}></div>
+            </div>
+            <div className={`d-flex `}>
+              <div className={`me-5 ${style.iconBorder}`}>
+                {" "}
+                <Play className={`${style.iconLeft}`} size={18} />
+              </div>
+              <div className={style.iconBorder}>
+                {" "}
+                <Play className={style.icon} size={18} />
+              </div>
+            </div>
           </div>
-          <div className={`d-flex `}>
-            <div className={`me-5 ${style.iconBorder}`}>
-              {" "}
-              <Play className={`${style.iconLeft}`} size={18} />
-            </div>
-            <div className={style.iconBorder}>
-              {" "}
-              <Play className={style.icon} size={18} />
-            </div>
-          </div>
-            </div>
-       
         </div>
       </div>
       <div>
-
       </div>
     </div>
   );
