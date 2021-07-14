@@ -7,3 +7,54 @@
     display: inline-block;
     padding: 1rem 3rem;
 }
+
+
+.contain{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media screen and (max-width:600px) {
+   .heading{
+    font-size: 1rem;
+   } 
+   .recent{
+    display: block;
+   
+}
+}
+
+@media screen and (min-width:768px) {
+    .heading{
+     font-size: 1rem;
+    } 
+    .recent{
+     display: block;
+     background: green;
+    
+ }
+ }
+
+ @media screen and (min-width:1050px) {
+    .heading{
+     font-size: 1rem;
+    } 
+    .recent{
+     display: flex;
+     width: 12rem;
+    
+ }
+ }
+
+ @media screen and (min-width:1200px) {
+    .heading{
+     font-size: 1rem;
+    } 
+ .recent{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  
+}
+ }

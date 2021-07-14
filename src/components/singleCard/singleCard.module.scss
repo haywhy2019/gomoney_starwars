@@ -1,0 +1,66 @@
+.card{
+   width: 100%;
+   margin: 3rem 0;
+   border: none;
+}
+
+.contain{
+     margin: 3rem 0;
+    width: 100%;
+   background-color: black;
+    display: flex;
+    align-items: center;
+    
+}
+.body{
+    align-self: center;
+
+}
+
+@media screen and (max-width:600px){
+    .card{
+   width: 80vw;
+   height: 15rem;
+ 
+ }
+ .contain{
+    margin: 1rem 0;
+   width: 100%;
+  background-color: black;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   
+}
+.body{
+   align-self: center;
+
+}
+}
+
+.button{
+    background: none;
+    color: black;
+    border-style: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-decoration: underline;
+   
+}
+.img{
+   width: 40rem;
+}
+
+
+@media screen and (max-width:600px){
+    .img{
+        width: 15rem;
+    }
+ }
+
+ @media screen and (max-width:768px){
+    .img{
+        width: 15rem;
+    }
+ }

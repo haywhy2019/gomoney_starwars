@@ -25,15 +25,16 @@ function Recent({content}) {
     }, []);
     return (
         <div>
-          <Container className="py-5">
+          <Container className="my-5">
               <Row>
-                  <Col md="12" className="text-center"> <p  className={`${style.heading}`}>Recently viewed {content}</p></Col>
+                  <Col md="12" className="text-center"> <p  className={`mt-3 ${style.heading}`}>Recently viewed {content}</p></Col>
               </Row>
               <Row className="text-center py-5">
-                  {
+                <Col className={style.contain}>
+                {
                       content === "ship" ?
                      ( <Col
-                      className="d-inline-flex flex-wrap justify-content-around"
+                      className={style.recent}
                       md="12"
                       sm="12"
                     >
@@ -52,7 +53,7 @@ function Recent({content}) {
                     </Col> )
                     : content === "planet" ? (
                         <Col
-                        className="d-inline-flex flex-wrap justify-content-around"
+                        className={style.recent}
                         md="12"
                       >
                         {allPlanet &&
@@ -71,8 +72,8 @@ function Recent({content}) {
                     ) : content === "people" ?
                     (
                         <Col
-                        className="d-inline-flex flex-wrap justify-content-around"
                         md="12"
+                        className={style.recent}
                       >
                         {allPeople &&
                           allPeople.data.results
@@ -89,6 +90,8 @@ function Recent({content}) {
                       </Col>) : ""
                     
                   }
+                </Col>
+                
               </Row>
               </Container>  
         </div>

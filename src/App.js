@@ -14,7 +14,7 @@ function App() {
     <Route exact path="/" component={HomePage} />
     <Route path="/people" component={PeoplePage} />
     <Route path="/ships" component={ShipPage} />
-    <Route path="/single" component={SinglePage} />
+    <Route path="/single/:type/:id" component={SinglePage} />
     </Switch>
     <Footer />
     </div>

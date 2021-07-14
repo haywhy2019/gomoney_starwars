@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPeople } from "../../redux/action/peopleAction";
 import { getShips } from "../../redux/action/shipsAction";
 import { getPlanet } from "../../redux/action/planetAction";
+import {getSingle} from "../../redux/action/singleAction"
 import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships";
 import PeopleImages from "../../assets/people";
@@ -10,11 +11,12 @@ import PlanetImages from "../../assets/planet";
 import PlanetCard from "../../components/planetCard/planetCard";
 import PeopleCard from "../../components/peopleCard/peopleCard";
 import Header from "../../components/header/header";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from "reactstrap";
 import style from "./homePage.module.scss";
 
 const HomePage = () => {
+  let history = useHistory()
   const dispatch = useDispatch();
   const [people, setPeople] = useState("");
   const [ships, setShips] = useState("");
@@ -33,6 +35,11 @@ const HomePage = () => {
     dispatch(getPlanet());
   }, []);
 
+   const viewDetails = (e,link,content) => {
+    e.preventDefault()
+    let id = link.replace(/\D/g, "");
+    history.push(`/single/${content}/${id}`) 
+  }
   return (
     <div>
       <Header />
@@ -59,6 +66,7 @@ const HomePage = () => {
                     title2={ships.model}
                     title3={ships.cargo_capacity}
                     key={`${index}ships`}
+                    onClick={(e) => viewDetails(e,ships.url,"ship")}
                   />
                 ))}
           </Col>
@@ -101,6 +109,7 @@ const HomePage = () => {
                       title2={people.birth_year}
                       title3={people.gender}
                       key={`${index}people`}
+                      onClick={(e) => viewDetails(e,people.url,"people")}
                     />
                   ))}
             </Col>
