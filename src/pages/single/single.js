@@ -5,8 +5,6 @@ import PeopleImage from "../../assets/character-3.jpg";
 import { getPeople } from "../../redux/action/peopleAction";
 import { getShips } from "../../redux/action/shipsAction";
 import { getPlanet } from "../../redux/action/planetAction";
-
-import { Container, Row, Col } from "reactstrap";
 import ShipImage from "../../assets/starship-1.jpg";
 import style from "./single.module.scss";
 import { Play } from "react-feather";
@@ -30,10 +28,10 @@ function Single(props) {
     dispatch(getPeople(1));
     dispatch(getShips(1));
     dispatch(getPlanet());
-  }, []);
+  });
 
   let choseImage;
-  if (type == "people") {
+  if (type === "people") {
     choseImage = PeopleImage;
   } else {
     choseImage = ShipImage;

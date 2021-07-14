@@ -30,7 +30,7 @@ export const getSingle = (id, type) => {
     dispatch(request());
     try {
       let response;
-      if (type == "people") {
+      if (type === "people") {
         response = await http({
           url: `/people/${id}/`,
           method: "get",

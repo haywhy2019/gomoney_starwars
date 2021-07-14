@@ -83,7 +83,7 @@ function People() {
   };
   useEffect(() => {
     dispatch(getPeople(1));
-  }, []);
+  });
 
   useEffect(() => {
 

@@ -7,24 +7,23 @@ import { searchShips, searchPeople } from "../../redux/action/searchAction";
 import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships";
 import PeopleImages from "../../assets/people";
-import PlanetImages from "../../assets/planet";
 import PlanetCard from "../../components/planetCard/planetCard";
 import PeopleCard from "../../components/peopleCard/peopleCard";
 import Header from "../../components/header/header";
 import { Link, useHistory } from "react-router-dom";
-import { Container, Row, Col, Button, Alert } from "reactstrap";
+import { Container, Row, Col, Button} from "reactstrap";
 import style from "./homePage.module.scss";
 
 const HomePage = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const [shipData, setShipData] = useState(null)
-  const [peopleData, setPeopleData]  = useState(null)
+  const [shipData, setShipData] = useState(null);
+  const [peopleData, setPeopleData] = useState(null);
   const allPeople = useSelector((state) => state.people.people);
   const allShips = useSelector((state) => state.ships.ships);
   const allPlanet = useSelector((state) => state.planet.planet);
- 
+
   // const searchPlanetResult = useSelector((state) => state.searchPlanet.searchPlanet);
   const searchShipsResult = useSelector(
     (state) => state.searchShips.searchShips
@@ -36,13 +35,12 @@ const HomePage = () => {
     dispatch(getPeople(1));
     dispatch(getShips(1));
     dispatch(getPlanet());
-   
-  }, []);
+  });
 
   useEffect(() => {
-    setShipData(searchShipsResult && searchShipsResult.data.results)
-    setPeopleData(searchPeopleResult && searchPeopleResult.data.results)
-  }, [searchShipsResult,searchPeopleResult])
+    setShipData(searchShipsResult && searchShipsResult.data.results);
+    setPeopleData(searchPeopleResult && searchPeopleResult.data.results);
+  }, [searchShipsResult, searchPeopleResult]);
 
   const viewDetails = (e, link, content) => {
     e.preventDefault();
@@ -59,10 +57,10 @@ const HomePage = () => {
   };
 
   const closeSearch = (e) => {
-    e.preventDefault()
-    setShipData(null)
-    setPeopleData(null)
-  }
+    e.preventDefault();
+    setShipData(null);
+    setPeopleData(null);
+  };
   return (
     <div>
       <Header
@@ -70,14 +68,22 @@ const HomePage = () => {
         value={search}
         onClick={(e) => searchName(e, search)}
       />
-      <Container>
-{ shipData &&( Array.isArray(shipData)) || peopleData&&( Array.isArray(peopleData)) ?
-
-(
-      <Button outline color="danger" className="mt-3" onClick={(e) => closeSearch(e)}> X Close search</Button>
-) : ""}
-        {
-        shipData && shipData.length >= 1 ? (
+      <Container className="text-center">
+        {(shipData && Array.isArray(shipData)) ||
+        (peopleData && Array.isArray(peopleData)) ? (
+          <Button
+            outline
+            color="danger"
+            className="mt-3 mb-3"
+            onClick={(e) => closeSearch(e)}
+          >
+            {" "}
+            X Close search
+          </Button>
+        ) : (
+          ""
+        )}
+        {shipData && shipData.length >= 1 ? (
           <Container>
             <Col
               className="d-inline-flex flex-wrap justify-content-around"
@@ -94,12 +100,12 @@ const HomePage = () => {
                     key={`${index}ships`}
                     onClick={(e) => viewDetails(e, ships.url, "ship")}
                   />
-                ))
-                }
+                ))}
             </Col>
           </Container>
-        ) : ""
-        }
+        ) : (
+          ""
+        )}
 
         {peopleData && peopleData.length >= 1 ? (
           <Container>
@@ -120,7 +126,9 @@ const HomePage = () => {
                 ))}
             </Col>
           </Container>
-        ) : ""}
+        ) : (
+          ""
+        )}
       </Container>
 
       <Container className="home">

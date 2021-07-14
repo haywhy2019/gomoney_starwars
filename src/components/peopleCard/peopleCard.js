@@ -11,7 +11,6 @@ import {
   Col,
 } from "reactstrap";
 import style from "./peopleCard.module.scss";
-import { ArrowRight } from "react-feather";
 
 function Displaycard({
   image,

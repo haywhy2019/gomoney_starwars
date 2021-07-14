@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import Header from "../../components/header/header";
 import style from "./shipPage.module.scss";
-
 import { getShips } from "../../redux/action/shipsAction";
 import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships";
@@ -11,11 +9,7 @@ import ShipImages from "../../assets/ships";
 import {
   Container,
   Row,
-  Col,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  Col
 } from "reactstrap";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
@@ -41,11 +35,7 @@ function Ship() {
   };
 
   const dispatch = useDispatch();
-  const [ship, setShip] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
   const allShips = useSelector((state) => state.ships.ships);
 
   const lastIndex = allShips && allShips.data.count;
@@ -58,7 +48,7 @@ function Ship() {
 
   useEffect(() => {
     dispatch(getShips(1));
-  }, []);
+  });
 
   return (
     <div>

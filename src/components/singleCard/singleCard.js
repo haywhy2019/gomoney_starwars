@@ -2,16 +2,12 @@ import React from "react";
 import {
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
-  Button,
-  Row,
-  Col,
 } from "reactstrap";
 import style from "./singleCard.module.scss";
-import { ArrowRight } from "react-feather";
+
 
 function Displaycard({
   type,

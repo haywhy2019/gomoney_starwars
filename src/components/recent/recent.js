@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { getPeople } from "../../redux/action/peopleAction";
 import { getShips } from "../../redux/action/shipsAction";
 import { getPlanet } from "../../redux/action/planetAction";
@@ -17,7 +17,7 @@ function Recent({ content, ships, people, planet }) {
     dispatch(getPeople());
     dispatch(getShips());
     dispatch(getPlanet());
-  }, []);
+  });
   return (
     <div>
       <Container className="my-5">

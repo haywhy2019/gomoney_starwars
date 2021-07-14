@@ -5,9 +5,6 @@ import {
     SEARCH_SHIPS_FAIL,
     SEARCH_SHIPS_SUCCESS,
     SEARCH_SHIPS_REQUEST,
-    SEARCH_PLANET_FAIL,
-    SEARCH_PLANET_SUCCESS,
-    SEARCH_PLANET_REQUEST,
   } from "../types";
   import { http } from "../../utility/axios";
   
