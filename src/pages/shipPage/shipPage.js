@@ -8,13 +8,13 @@ import { getShips } from "../../redux/action/shipsAction";
 import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships"
 
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import {ChevronLeft,  ChevronRight } from "react-feather"
 
 import ReactPaginate from "react-paginate"
 
 
-function People() {
+function Ship() {
 
 
 const Previous = () => {
@@ -37,9 +37,12 @@ const Next = (next) => {
 }
 
     const dispatch = useDispatch();
-    const [people, setPeople] = useState("");
+    const [ship, setShip] = useState("");
 const [currentPage, setCurrentPage] = useState(0);
-
+const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+console.log(ship,"ship")
+  const toggle = () => setDropdownOpen(prevState => !prevState);
     const allShips = useSelector((state) => state.ships.ships);
 
     const lastIndex = allShips &&(allShips.data.count)
@@ -112,4 +115,4 @@ const handlePageClick = async(data) => {
     )
 }
 
-export default People
+export default Ship

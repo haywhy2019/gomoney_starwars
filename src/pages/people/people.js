@@ -8,7 +8,7 @@ import Header from "../../components/header/header";
 import style from "./people.module.scss";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import ReactPaginate from "react-paginate";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col,  Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 
 function People() {
   const Previous = () => {
@@ -32,11 +32,17 @@ function People() {
   const dispatch = useDispatch();
   const [people, setPeople] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  
+console.log(people,"people")
+  const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const allPeople = useSelector((state) => state.people.people);
+  // const filteredPeople = allPeople &&(allPeople.data.results.gender.toLowerCase().includes(people.toLowerCase()))
+  const filteredPeople = allPeople &&(allPeople.data.results).filter(filter => filter.gender.includes(people))
+  console.log(filteredPeople, "filter")
 
   const lastIndex = allPeople && allPeople.data.count;
-  console.log(lastIndex, "last");
   const pageCount = Math.ceil(lastIndex / 9);
   const handlePageClick = async (data) => {
     let selected = data.selected;
@@ -51,6 +57,19 @@ function People() {
     <div>
       <Header />
       <Container>
+        <Row className="mt-5">
+        <Dropdown isOpen={dropdownOpen} toggle={toggle} value={people} onClick={(e) => setPeople(e.target.value)}>
+      <DropdownToggle caret color="primary" size="lg">
+        Filter
+      </DropdownToggle>
+      <DropdownMenu>
+      <DropdownItem value="">All</DropdownItem>
+        <DropdownItem value="male">Male</DropdownItem>
+        <DropdownItem value="female">Female</DropdownItem>
+        <DropdownItem value="n/a">Robot</DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+        </Row>
         <Row>
           <Col md="12" sm="12" className="py-5">
             <h1 className="text-center pt-5">Starwars Characters</h1>
@@ -61,8 +80,8 @@ function People() {
               className="d-inline-flex flex-wrap justify-content-around"
               md="12"
             >
-              {allPeople &&
-                allPeople.data.results.map((people, index) => (
+              {filteredPeople &&
+                filteredPeople.map((people, index) => (
                   <PeopleCard
                     image={PeopleImages[0].people}
                     title1={people.name}
@@ -71,9 +90,6 @@ function People() {
                     key={`${index}people`}
                   />
                 ))}
-            </Col>
-            <Col md="12">
-              {/* <Button className={`${style.button}`}> VIEW MORE</Button> */}
             </Col>
           </Row>
         </Row>
