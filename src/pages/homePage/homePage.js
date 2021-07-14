@@ -30,8 +30,8 @@ const HomePage = () => {
   const allPlanetLoad = useSelector((state) => state.planet.loading);
 
   useEffect(() => {
-    dispatch(getPeople());
-    dispatch(getShips());
+    dispatch(getPeople(1));
+    dispatch(getShips(1));
     dispatch(getPlanet());
   }, []);
 

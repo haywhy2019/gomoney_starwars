@@ -25,15 +25,12 @@ import {
     };
   };
   
-  export const getShips = (data) => {
-    if(data === undefined){
-      data = ""
-    }
+  export const getShips = (page) => {
     return async function (dispatch) {
       dispatch(request());
       try {
         const response = await http({
-          url: `/starships/${data}/`,
+          url: `/starships/?page=${page}`,
           method: "get",
         });
         console.log(response,"response")

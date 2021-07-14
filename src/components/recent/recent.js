@@ -11,13 +11,10 @@ import PeopleCard from "../../components/peopleCard/peopleCard";
 import {Container, Row, Col} from "reactstrap"
 import style from "./recent.module.scss"
 
-function Recent({content}) {
+function Recent({content,ships,people,planet}) {
     const dispatch = useDispatch();
-    const allPeople = useSelector((state) => state.people.people);
-    const allShips = useSelector((state) => state.ships.ships);
-    const allPlanet = useSelector((state) => state.planet.planet);
-
   
+    console.log(ships,people,planet, "loadeing")
     useEffect(() => {
       dispatch(getPeople());
       dispatch(getShips());
@@ -38,8 +35,8 @@ function Recent({content}) {
                       md="12"
                       sm="12"
                     >
-                      {allShips &&
-                        allShips.data.results
+                      {ships &&
+                        ships.data.results
                           .filter((ship, index) => index < 3)
                           .map((ships, index) => (
                             <ShipCard
@@ -56,8 +53,8 @@ function Recent({content}) {
                         className={style.recent}
                         md="12"
                       >
-                        {allPlanet &&
-                          allPlanet.data.results
+                        {planet &&
+                          planet.data.results
                             .filter((Planet, index) => index < 3)
                             .map((planet, index) => (
                               <ShipCard
@@ -73,10 +70,10 @@ function Recent({content}) {
                     (
                         <Col
                         md="12"
-                        className={style.recent}
+                        className={style.recentPeople}
                       >
-                        {allPeople &&
-                          allPeople.data.results
+                        {people &&
+                          people.data.results
                             .filter((people, index) => index < 4)
                             .map((people, index) => (
                               <PeopleCard

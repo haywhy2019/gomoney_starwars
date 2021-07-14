@@ -9,15 +9,50 @@ import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships"
 
 import { Container, Row, Col, Button } from "reactstrap";
+import {ChevronLeft,  ChevronRight } from "react-feather"
+
+import ReactPaginate from "react-paginate"
+
 
 function People() {
+
+
+const Previous = () => {
+  return (
+    <React.Fragment>
+      <ChevronLeft size={15} /> {""}
+      <span className="align-middle d-none d-md-inline-block">Prev</span>   
+    </React.Fragment>
+  )
+}
+
+
+const Next = (next) => {
+  return (
+    <React.Fragment>
+      <span className="align-middle d-none d-md-inline-block">Next</span>
+      <ChevronRight size={15} />
+    </React.Fragment>
+  )
+}
+
     const dispatch = useDispatch();
     const [people, setPeople] = useState("");
-    const allPeople = useSelector((state) => state.people.people);
+const [currentPage, setCurrentPage] = useState(0);
+
     const allShips = useSelector((state) => state.ships.ships);
 
+    const lastIndex = allShips &&(allShips.data.count)
+    console.log(lastIndex, "last")
+const pageCount = Math.ceil(lastIndex/9)
+const handlePageClick = async(data) => {
+  let selected = data.selected;
+  setCurrentPage(selected)
+   dispatch(getShips(selected + 1))
+  }
+
     useEffect(() => {
-        dispatch(getShips());
+        dispatch(getShips(1));
       
       }, []);
     
@@ -47,12 +82,31 @@ function People() {
                 />
               ))}
            </Col>
-           <Col md="12">
-           {/* <Button className={`${style.button}`}> VIEW MORE</Button> */}
-           </Col>
        </Row> 
     </Row>
-         
+    <div sm="12" className="d-flex justify-content-center">
+       
+       <ReactPaginate
+     previousLabel={<Previous />}
+     nextLabel={<Next />}
+     breakLabel={"..."}
+     pageCount={pageCount}
+     marginPagesDisplayed={2}
+     pageRangeDisplayed={5}
+         forcePage={currentPage}
+     onPageChange={handlePageClick}
+    breakClassName={'page-item'}
+    breakLinkClassName={'page-link'}
+    containerClassName={'pagination'}
+    pageClassName={'page-item'}
+    pageLinkClassName={'page-link'}
+    previousClassName={'page-item'}
+    previousLinkClassName={'page-link'}
+    nextClassName={'page-item'}
+    nextLinkClassName={'page-link'}
+    activeClassName={'active'}
+    />
+   </div>
     </Container>
         </div>
     )

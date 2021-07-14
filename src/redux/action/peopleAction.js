@@ -25,12 +25,12 @@ export const success = (data) => {
   };
 };
 
-export const getPeople = () => {
+export const getPeople = (page) => {
   return async function (dispatch) {
     dispatch(request());
     try {
       const response = await http({
-        url: "/people",
+        url: `/people/?page=${page}`,
         method: "get",
       });
       console.log(response,"response")

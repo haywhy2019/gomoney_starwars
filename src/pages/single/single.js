@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header/header";
 import PeopleImage from "../../assets/character-3.jpg"
+import { getPeople } from "../../redux/action/peopleAction";
+import { getShips } from "../../redux/action/shipsAction";
+import { getPlanet } from "../../redux/action/planetAction";
 
 import {
   Container,
@@ -21,11 +24,17 @@ function Single(props) {
   const type = props.match.params.type;
   const id = props.match.params.id;
   const allDetails = useSelector((state) => state.single.single);
+  const allPeople = useSelector((state) => state.people.people);
+  const allShips = useSelector((state) => state.ships.ships);
+  const allPlanet = useSelector((state) => state.planet.planet);
 
   const  data =  allDetails &&(allDetails.data)
   console.log(data, "all details");
   useEffect(() => {
     dispatch(getSingle(id,type));
+    dispatch(getPeople(1));
+    dispatch(getShips(1));
+    dispatch(getPlanet());
   }, []);
 
   let choseImage 
@@ -52,7 +61,7 @@ function Single(props) {
           </div>
        
       
-      <Recent content={type} />
+      <Recent content={type}  ships={allShips} people={allPeople} planet={allPlanet}/>
     </div>
   );
 }
