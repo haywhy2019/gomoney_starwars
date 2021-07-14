@@ -2,9 +2,9 @@ import React from "react";
 import Logo from "../../assets/logo.png";
 import style from "./headerContent.module.scss";
 import { Search } from "react-feather";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col,Button } from "reactstrap";
 
-function headerContent({ onChange, ...otherProps }) {
+function headerContent({ onChange, value, onClick }) {
   return (
     <Container className={`text-center ${style.topBotPad}`}>
       <div
@@ -25,15 +25,15 @@ function headerContent({ onChange, ...otherProps }) {
           sm="5"
           className={`d-flex align-items-center py-3 ${style.inputBg}`}
         >
-          <Search className={`mx-4`} />
+          <Search className={` ${style.search}`} onClick={onClick}/>
           <input
             className={`flex-grow-1 ${style.input}`}
             placeholder="Enter a search term"
-            type=""
             onChange={onChange}
-            {...otherProps}
+            value={value}
           />
         </Col>
+        <Button color="primary" onClick={onClick} className={style.mobileButton}>Search</Button>
       </Row>
     </Container>
   );

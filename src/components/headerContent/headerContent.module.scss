@@ -8,6 +8,16 @@
     
 }
 
+.search{
+  margin-left: 2rem;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.mobileButton{
+    display: none;
+}
+
 @media screen and (max-width:600px) {
     .logo{
         height: 2rem;
@@ -27,6 +37,29 @@
     .inputBg{
       width: 80%;
     }
+    .mobileButton{
+        display: block;
+        margin-top: 2rem;
+        width: 80%;
+    }
+  
+}
+
+@media screen and (max-width:370px) {
+    .inputBg{
+      width: 80%;
+    }
+    .search{
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+    .mobileButton{
+        display: block;
+        margin-top: 2rem;
+        width: 80%;
+    }
+  
 }
 
 
