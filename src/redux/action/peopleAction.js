@@ -33,7 +33,6 @@ export const getPeople = (page) => {
         url: `/people/?page=${page}`,
         method: "get",
       });
-      console.log(response,"response")
       dispatch(success(response));
     } catch (err) {
       const errRes = err.message;

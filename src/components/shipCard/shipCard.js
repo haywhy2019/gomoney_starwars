@@ -8,11 +8,19 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-import style from "./shipCard.module.scss"
+import style from "./shipCard.module.scss";
 import { ArrowRight } from "react-feather";
 
-
-function Displaycard({image,title1,title2,title3,description,onClick,icon, className}) {
+function Displaycard({
+  image,
+  title1,
+  title2,
+  title3,
+  description,
+  onClick,
+  icon,
+  className,
+}) {
   return (
     <div>
       <Card className={style.card}>
@@ -31,11 +39,12 @@ function Displaycard({image,title1,title2,title3,description,onClick,icon, class
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             {title3}
           </CardSubtitle>
-          <CardText>
-            {description}
-          </CardText>
+          <CardText>{description}</CardText>
           <div className={`text-end `}>
-          <Button onClick={onClick} className={style.button}> Read More <ArrowRight size={15} className={style.icon}/> </Button>
+            <Button onClick={onClick} className={style.button}>
+              {" "}
+              Read More <ArrowRight size={15} className={style.icon} />{" "}
+            </Button>
           </div>
         </CardBody>
       </Card>

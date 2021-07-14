@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPeople } from "../../redux/action/peopleAction";
 import { getShips } from "../../redux/action/shipsAction";
 import { getPlanet } from "../../redux/action/planetAction";
-import {getSingle} from "../../redux/action/singleAction"
+import { getSingle } from "../../redux/action/singleAction";
 import ShipCard from "../../components/shipCard/shipCard";
 import ShipImages from "../../assets/ships";
 import PeopleImages from "../../assets/people";
@@ -16,7 +16,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import style from "./homePage.module.scss";
 
 const HomePage = () => {
-  let history = useHistory()
+  let history = useHistory();
   const dispatch = useDispatch();
   const [people, setPeople] = useState("");
   const [ships, setShips] = useState("");
@@ -35,11 +35,11 @@ const HomePage = () => {
     dispatch(getPlanet());
   }, []);
 
-   const viewDetails = (e,link,content) => {
-    e.preventDefault()
+  const viewDetails = (e, link, content) => {
+    e.preventDefault();
     let id = link.replace(/\D/g, "");
-    history.push(`/single/${content}/${id}`) 
-  }
+    history.push(`/single/${content}/${id}`);
+  };
   return (
     <div>
       <Header />
@@ -66,7 +66,7 @@ const HomePage = () => {
                     title2={ships.model}
                     title3={ships.cargo_capacity}
                     key={`${index}ships`}
-                    onClick={(e) => viewDetails(e,ships.url,"ship")}
+                    onClick={(e) => viewDetails(e, ships.url, "ship")}
                   />
                 ))}
           </Col>
@@ -82,10 +82,8 @@ const HomePage = () => {
             <h1 className="text-center pt-5">Popular Planets</h1>
             <div className={`${style.titleLine}`}></div>
           </Col>
-<Col md="12">
-           
-                  <PlanetCard  content={allPlanet}/>
-             
+          <Col md="12">
+            <PlanetCard content={allPlanet} />
           </Col>
         </Row>
 
@@ -109,7 +107,7 @@ const HomePage = () => {
                       title2={people.birth_year}
                       title3={people.gender}
                       key={`${index}people`}
-                      onClick={(e) => viewDetails(e,people.url,"people")}
+                      onClick={(e) => viewDetails(e, people.url, "people")}
                     />
                   ))}
             </Col>

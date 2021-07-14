@@ -19,9 +19,13 @@ function headerContent({ onChange, ...otherProps }) {
           Starships and Planets
         </p>
       </div>
-    <Row className="justify-content-center" sm="5">
-        <Col md="7" sm="5" className={`d-flex align-items-center py-3 ${style.inputBg}`}>
-          <Search className={`mx-4`}/>
+      <Row className="justify-content-center" sm="5">
+        <Col
+          md="7"
+          sm="5"
+          className={`d-flex align-items-center py-3 ${style.inputBg}`}
+        >
+          <Search className={`mx-4`} />
           <input
             className={`flex-grow-1 ${style.input}`}
             placeholder="Enter a search term"
@@ -30,7 +34,7 @@ function headerContent({ onChange, ...otherProps }) {
             {...otherProps}
           />
         </Col>
-        </Row>
+      </Row>
     </Container>
   );
 }

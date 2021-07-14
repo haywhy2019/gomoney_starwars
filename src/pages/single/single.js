@@ -1,21 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header/header";
-import PeopleImage from "../../assets/character-3.jpg"
+import PeopleImage from "../../assets/character-3.jpg";
 import { getPeople } from "../../redux/action/peopleAction";
 import { getShips } from "../../redux/action/shipsAction";
 import { getPlanet } from "../../redux/action/planetAction";
 
-import {
-  Container,
-  Row,
-  Col
-} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import ShipImage from "../../assets/starship-1.jpg";
 import style from "./single.module.scss";
 import { Play } from "react-feather";
 import Recent from "../../components/recent/recent";
-import SingleCard from "../../components/singleCard/singleCard"
+import SingleCard from "../../components/singleCard/singleCard";
 
 import { getSingle } from "../../redux/action/singleAction";
 
@@ -28,40 +24,44 @@ function Single(props) {
   const allShips = useSelector((state) => state.ships.ships);
   const allPlanet = useSelector((state) => state.planet.planet);
 
-  const  data =  allDetails &&(allDetails.data)
-  console.log(data, "all details");
+  const data = allDetails && allDetails.data;
   useEffect(() => {
-    dispatch(getSingle(id,type));
+    dispatch(getSingle(id, type));
     dispatch(getPeople(1));
     dispatch(getShips(1));
     dispatch(getPlanet());
   }, []);
 
-  let choseImage 
-  if(  type == "people" ){
-    choseImage = PeopleImage
-  }else {
-    choseImage = ShipImage
+  let choseImage;
+  if (type == "people") {
+    choseImage = PeopleImage;
+  } else {
+    choseImage = ShipImage;
   }
 
   return (
     <div>
-      <Header content={<Content />} />   
-      
-          <div md="12" sm="12" className={style.center}>
-        <SingleCard 
-        type = {type}
-        image = {choseImage}
-        title1={data&&(data.name)} 
-        title2=  {data&&(data.birth_year) || data&&(data.cargo_capacity)}
-         title3= {data&&(data.eye_divor) || data&&(data.consumables)}
-          title4 =   {data&&(data.gender) || data&&(data.crew)}
-          title5  =    {data&&(data.height) || data&&(data.passengers)}
-          title6 =  {data&&(data.mass) || data&&(data.manufacturer)}/>
-          </div>
-       
-      
-      <Recent content={type}  ships={allShips} people={allPeople} planet={allPlanet}/>
+      <Header content={<Content />} />
+
+      <div md="12" sm="12" className={style.center}>
+        <SingleCard
+          type={type}
+          image={choseImage}
+          title1={data && data.name}
+          title2={(data && data.birth_year) || (data && data.cargo_capacity)}
+          title3={(data && data.eye_divor) || (data && data.consumables)}
+          title4={(data && data.gender) || (data && data.crew)}
+          title5={(data && data.height) || (data && data.passengers)}
+          title6={(data && data.mass) || (data && data.manufacturer)}
+        />
+      </div>
+
+      <Recent
+        content={type}
+        ships={allShips}
+        people={allPeople}
+        planet={allPlanet}
+      />
     </div>
   );
 }

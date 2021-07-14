@@ -8,7 +8,15 @@ import Header from "../../components/header/header";
 import style from "./people.module.scss";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import ReactPaginate from "react-paginate";
-import { Container, Row, Col,  Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 
 function People() {
   const Previous = () => {
@@ -33,14 +41,13 @@ function People() {
   const [people, setPeople] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
-console.log(people,"people")
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const allPeople = useSelector((state) => state.people.people);
-  // const filteredPeople = allPeople &&(allPeople.data.results.gender.toLowerCase().includes(people.toLowerCase()))
-  const filteredPeople = allPeople &&(allPeople.data.results).filter(filter => filter.gender.includes(people))
-  console.log(filteredPeople, "filter")
+  const filteredPeople =
+    allPeople &&
+    allPeople.data.results.filter((filter) => filter.gender.includes(people));
 
   const lastIndex = allPeople && allPeople.data.count;
   const pageCount = Math.ceil(lastIndex / 9);
@@ -58,17 +65,22 @@ console.log(people,"people")
       <Header />
       <Container>
         <Row className="mt-5">
-        <Dropdown isOpen={dropdownOpen} toggle={toggle} value={people} onClick={(e) => setPeople(e.target.value)}>
-      <DropdownToggle caret color="primary" size="lg">
-        Filter
-      </DropdownToggle>
-      <DropdownMenu>
-      <DropdownItem value="">All</DropdownItem>
-        <DropdownItem value="male">Male</DropdownItem>
-        <DropdownItem value="female">Female</DropdownItem>
-        <DropdownItem value="n/a">Robot</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+          <Dropdown
+            isOpen={dropdownOpen}
+            toggle={toggle}
+            value={people}
+            onClick={(e) => setPeople(e.target.value)}
+          >
+            <DropdownToggle caret color="primary" size="lg">
+              Filter
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem value="">All</DropdownItem>
+              <DropdownItem value="male">Male</DropdownItem>
+              <DropdownItem value="female">Female</DropdownItem>
+              <DropdownItem value="n/a">Robot</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </Row>
         <Row>
           <Col md="12" sm="12" className="py-5">
