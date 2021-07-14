@@ -66,7 +66,7 @@ function Ship() {
       <Container>
         <Row>
           <Col md="12" sm="12" className="py-5">
-            <h1 className="text-center pt-5">Starwars Characters</h1>
+            <h1 className="text-center pt-5">Popular Starships</h1>
             <div className={`${style.titleLine}`}></div>
           </Col>
           <Row className="text-center">
